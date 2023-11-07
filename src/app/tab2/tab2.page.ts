@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../store';
+import { getPhotos } from '../store/photo/photo.selector';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +10,16 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  gallery: any[] = [];
+
+  constructor(
+    private store: Store<IAppState>
+  ) {}
+
+  ionViewWillEnter(): void {
+    this.store.select(getPhotos).subscribe((res) => {
+      this.gallery = res;
+    })
+  }
 
 }

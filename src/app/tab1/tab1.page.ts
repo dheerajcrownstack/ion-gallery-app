@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PhotoService } from '../services/photo/photo.service';
+import { UserPhoto } from '../types';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,18 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  currentPic!: UserPhoto;
+
+  constructor(
+    private photoService: PhotoService
+  ) {}
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery().then((res) => {
+      this.currentPic = res;
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
 }

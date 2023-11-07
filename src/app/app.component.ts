@@ -1,4 +1,8 @@
+
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IAppState } from './store';
+import { SetAppVersion } from './store/version/version.action';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(
+    private store: Store<IAppState>
+  ) {
+    this.store.dispatch(new SetAppVersion({version: '0.0.1'}))
+  }
 }

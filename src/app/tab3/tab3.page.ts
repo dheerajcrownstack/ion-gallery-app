@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { IAppState } from '../store';
+import { Store } from '@ngrx/store';
+import { getVersion } from '../store/version/verison.selector';
+import { Observable } from 'rxjs';
+import { IVersionPayload } from '../types';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +12,12 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  version: string = '';
+
+  constructor(
+    private store: Store<IAppState>
+  ) {
+    this.store.select(getVersion).subscribe((version) => this.version = version);
+  }
 
 }
