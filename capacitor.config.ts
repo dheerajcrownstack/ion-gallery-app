@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.gallerydj.app',
-  appName: 'app',
+  appId: 'app.gallery.com',
+  appName: 'gallery-app',
   webDir: 'www',
   server: {
     androidScheme: 'https'
